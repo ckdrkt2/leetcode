@@ -1,2 +1,3 @@
 # leetcode
-번호순으로 정렬
+
+To study: 1910, 1860

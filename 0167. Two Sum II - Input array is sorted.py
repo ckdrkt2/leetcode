@@ -1,10 +1,14 @@
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        a = {i:None for i in range(-1000,1001)}
-        for i, n in enumerate(numbers):
-            if target - n >1000 or target - n < -1000:
-                continue
-            if a[target - n] != None:
-                return [a[target - n]+1, i+1]
-            else:
-                a[n] = i
+        i, j = 0, len(numbers) - 1
+        while i < j:
+            s = numbers[i] + numbers[j]
+            if s == target: break
+            if s > target: j -= 1
+            else: i += 1 
+        return [i + 1, j + 1]
+
+'''
+time complexity: O(N)
+space complexity: O(1)
+'''

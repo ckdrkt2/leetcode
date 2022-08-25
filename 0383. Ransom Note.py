@@ -1,7 +1,7 @@
+from collections import Counter
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
-        for i in ransomNote:
-            if i in magazine:
-                magazine = magazine.replace(i,"",1)
-            else: return False
+        magdict, randict = Counter(magazine), Counter(ransomNote)
+        for k in randict:
+            if randict[k] > magdict[k]: return False
         return True

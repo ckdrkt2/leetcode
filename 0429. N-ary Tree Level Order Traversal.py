@@ -1,4 +1,3 @@
-```python
 """
 # Definition for a Node.
 class Node:
@@ -22,12 +21,3 @@ class Solution:
                     if c: stack.append(c)
             a.append(b)
         return a
-```
-
-time comeplexity: O(N)
-space complexity: O(N)
-
-BFS를 이용한 풀이입니다.
-stack은 현재 높이의 노드들의 children을 보관하는 용도로 사용하고, 각각의 노드에 대해 다시 children을 stack에 추가합니다.
-결과적으로 탐색은 BFS가 되어서 높이 순서대로 탐색을 진행하게 되기 때문에 자연스럽게 리스트에 val을 쌓을 수 있습니다.
-현재 층의 노드들 또한 stack에 중복되지 않도록 초기에 길이를 저장하기 때문에 stack만으로 구현할 수 있습니다.

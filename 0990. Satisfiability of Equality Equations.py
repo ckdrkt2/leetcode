@@ -1,0 +1,11 @@
+from string import ascii_lowercase
+class Solution:
+    def equationsPossible(self, equations: List[str]) -> bool:
+        def find(x):
+            if x != uf[x]: uf[x] = find(uf[x])
+            return uf[x]
+        uf = {a: a for a in ascii_lowercase}
+        for a, e, _, b in equations:
+            if e == "=":
+                uf[find(a)] = find(b)
+        return not any(e == "!" and find(a) == find(b) for a, e, _, b in equations)

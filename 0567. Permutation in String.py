@@ -1,4 +1,4 @@
-```python
+from string import ascii_lowercase
 class Solution:
     def checkInclusion(self, s1: str, s2: str) -> bool:
         i, l = 0, len(s1)
@@ -6,10 +6,6 @@ class Solution:
             for c in ascii_lowercase:
                 d = abs(s1.count(c) - s2[i:i+l].count(c))
                 if d > 0: break
-            if d == 0: return True 
+            if d == 0: return True
             i += d
         return False
-```
-
-time complexity: O(L1+26(L2-L1))
-space complexity: O(1)

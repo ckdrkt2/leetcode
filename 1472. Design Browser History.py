@@ -1,4 +1,3 @@
-```python
 class BrowserHistory:
 
     def __init__(self, homepage: str):
@@ -28,12 +27,3 @@ class BrowserHistory:
 # obj.visit(url)
 # param_2 = obj.back(steps)
 # param_3 = obj.forward(steps)
-```
-
-time complexity: O(1)
-space complexity: O(N)
-
-브라우저 히스토리 구현 문제입니다.
-초기에 히스토리를 담을 stack, 현재 위치 값 x, 히스토리 총 길이 l을 정의합니다.
-visit을 하면 먼저 현재 위치 앞에 있는 히스토리를 제거하고 현재 위치와 stack에 추가합니다. 이후 총 길이 l을 재정의합니다.
-back과 forward는 구조가 비슷합니다. back의 경우 뒤로 가려는 범위보다 아무리 커도 최대 현재 위치 값 만큼 뒤로 갈 수 있도록 steps 변수를 보정합니다. forward의 경우에는 l과 x+steps 값을 비교하여 더 큰 경우에는 x값을 보정합니다.

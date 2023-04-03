@@ -1,13 +1,10 @@
-```python
+from typing import List
 class Solution:
     def numRescueBoats(self, people: List[int], limit: int) -> int:
         people.sort(reverse=True)
-        a, i, j = 0, 0, -1
+        ans, i, j = 0, 0, -1
         while i - j <= len(people):
             if people[i] + people[j] <= limit: j -= 1
             i += 1
-            a += 1
-        return a
-```
-time complexity: O(NlogN)   
-space complexity: O(1)
+            ans += 1
+        return ans

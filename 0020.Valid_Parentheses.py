@@ -1,4 +1,4 @@
-class Solution: 
+class Solution:
     def isValid(self, s: str) -> bool:
         stack = []
         for i in s:
@@ -13,7 +13,4 @@ class Solution:
                     continue
                 else:
                     return False
-        if len(stack) == 0:
-            return True
-        else:
-            return False
+        return False if stack else True

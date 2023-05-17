@@ -1,9 +1,9 @@
-```python
+from typing import Optional
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, val=0, next=None):
-#         self.val = val
-#         self.next = next
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
 class Solution:
     def pairSum(self, head: Optional[ListNode]) -> int:
         slow = fast = head
@@ -11,14 +11,9 @@ class Solution:
         while fast and fast.next:
             fast = fast.next.next
             slow.next, pre, slow = pre, slow, slow.next
-        a = 0
+        ans = 0
         while slow and pre:
-            a = max(a, slow.val+pre.val)
+            ans = max(ans, slow.val + pre.val)
             slow = slow.next
             pre = pre.next
-            
-        return a
-```
-
-time complexity: O(N)   
-space complexity: O(1)
+        return ans

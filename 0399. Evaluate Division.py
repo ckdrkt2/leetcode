@@ -1,4 +1,5 @@
-```python
+from typing import List
+from collections import deque
 class Solution:
     def calcEquation(self, equations: List[List[str]], values: List[float], queries: List[List[str]]) -> List[float]:
         graph = {}
@@ -19,7 +20,7 @@ class Solution:
             if b not in graph or e not in graph:
                 return -1.0
                 
-            q = collections.deque([(b, 1.0)])
+            q = deque([(b, 1.0)])
             visited = set()
             
             while q:
@@ -34,4 +35,3 @@ class Solution:
         
         build_graph(equations, values)
         return [find_path(q) for q in queries]
-```

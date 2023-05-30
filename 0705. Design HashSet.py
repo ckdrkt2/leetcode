@@ -1,4 +1,3 @@
-```python
 class MyHashSet:
 
     def __init__(self):
@@ -24,7 +23,3 @@ class MyHashSet:
 # obj.add(key)
 # obj.remove(key)
 # param_3 = obj.contains(key)
-```
-
-time complexity: create: O(2^15), rest: O(1)         
-space complexoty: O(2^15)

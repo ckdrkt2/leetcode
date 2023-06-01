@@ -1,4 +1,4 @@
-```python
+from typing import List
 class Solution:
     def shortestPathBinaryMatrix(self, grid: List[List[int]]) -> int:
         if grid[0][0] or grid[-1][-1]: return -1
@@ -15,7 +15,3 @@ class Solution:
                         grid[x][y] = 1
                         stack.append((x,y))
         return -1
-```
-
-time complexity: O(N^2)         
-space complexity: O(N)

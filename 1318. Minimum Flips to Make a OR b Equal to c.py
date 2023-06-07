@@ -1,12 +1,7 @@
-```python
 class Solution:
     def minFlips(self, a: int, b: int, c: int) -> int:
         return (bin(~(c|(~a))) + bin(~(c|(~b))) + bin(c&(~(a|b)))).count('1')
-```
-
-time complexity: O(1)
-space complexity: O(1)
-
+'''
 비트연산을 활용한 풀이입니다.
 
 문제 해결을 위해 두 가지 케이스로 도달해야 하는 값을 비교합니다.
@@ -18,3 +13,4 @@ space complexity: O(1)
 이러한 경우에는 a, b 둘 중에 하나만 비트가 1이어도 되기 때문에(OR 연산이므로) a, b를 논리합으로 더한 후에 flip 해야하는 비트 수를 구합니다.
 
 결과적으로 구한 값들을 2진수로 바꾼 후 1의 개수를 카운트하여 flip 해야하는 비트 수를 구하게 됩니다.
+'''

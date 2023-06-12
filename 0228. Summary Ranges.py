@@ -1,24 +1,20 @@
-```python
+from typing import List
 class Solution:
     def summaryRanges(self, nums: List[int]) -> List[str]:
         if not nums: return []
-        a, s, ex = [], "", None
+        ans, s, ex = [], "", None
         for i, n in enumerate(nums):
             if not s:
                 s += str(n)
             elif n - ex > 1:
                 if int(s) == ex:
-                    a.append(s)
+                    ans.append(s)
                 else:
-                    a.append(s + '->' + str(ex))
+                    ans.append(s + '->' + str(ex))
                 s = str(n)
             ex = n
         if int(s) == ex:
-            a.append(s)
+            ans.append(s)
         else:
-            a.append(s + '->' + str(ex))
-        return a
-```
-
-time complexity: O(N)       
-space complexity: O(N)
+            ans.append(s + '->' + str(ex))
+        return ans

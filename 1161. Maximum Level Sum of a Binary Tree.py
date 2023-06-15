@@ -1,10 +1,10 @@
-```python
+from typing import Optional
 # Definition for a binary tree node.
-# class TreeNode:
-#     def __init__(self, val=0, left=None, right=None):
-#         self.val = val
-#         self.left = left
-#         self.right = right
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
 class Solution:
     def maxLevelSum(self, root: Optional[TreeNode]) -> int:
         stack, a = [(root,1)], {}
@@ -16,10 +16,3 @@ class Solution:
                 stack.append((node.left, level+1))
                 stack.append((node.right, level+1))
         return sorted(a.keys(), key=lambda x : a[x], reverse=True)[0]
-```
-
-time complexity: O(N)
-space complexity: O(N)
-
-BFS를 이용한 풀이입니다. BFS로 탐색을 하고 각각의 level에 대한 총 합을 구합니다.
-이후 총 합 dict를 정렬하여 합이 가장 큰 가장 작은 level을 반환합니다.

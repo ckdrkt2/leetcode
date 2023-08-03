@@ -1,16 +1,13 @@
-```python
+from typing import List
+from collections import deque
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
         if not digits: return []
-        a = ['']
+        ans = deque([''])
         d = {'2':'abc', '3':'def', '4':'ghi', '5':'jkl', '6':'mno', '7':'pqrs', '8':'tuv', '9':'wxyz'}
         for digit in digits:
-            for i in range(len(a)):
-                cur = a.pop(0)
+            for i in range(len(ans)):
+                cur = ans.popleft()
                 for c in d[digit]:
-                    a.append(cur + c)
-        return a
-```
-
-time complexity: O(4^N)         
-space complexity: O(4^N)
+                    ans.append(cur + c)
+        return ans

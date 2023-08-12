@@ -1,4 +1,4 @@
-```python
+from typing import List
 class Solution:
     def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
         if obstacleGrid[0][0] or obstacleGrid[-1][-1]: return 0
@@ -15,7 +15,3 @@ class Solution:
             for j in range(1,n):
                 obstacleGrid[i][j] = 0 if obstacleGrid[i][j] else obstacleGrid[i-1][j] + obstacleGrid[i][j-1]
         return obstacleGrid[-1][-1]
-```
-
-time complexity: O(MN)      
-space complexity: O(1)

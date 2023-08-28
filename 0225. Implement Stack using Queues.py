@@ -1,8 +1,8 @@
-```python
+from collections import deque
 class MyStack:
 
     def __init__(self):
-        self._queue = collections.deque()
+        self._queue = deque()
 
     def push(self, x: int) -> None:
         q = self._queue
@@ -26,7 +26,3 @@ class MyStack:
 # param_2 = obj.pop()
 # param_3 = obj.top()
 # param_4 = obj.empty()
-```
-
-time complexity: O(N)           
-space complexity: O(N)

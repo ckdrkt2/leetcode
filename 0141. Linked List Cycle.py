@@ -1,19 +1,14 @@
-```python
+from typing import Optional
 # Definition for singly-linked list.
-# class ListNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.next = None
+class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
         a, b = head, head
         while b and b.next:
             a = a.next
             b = b.next.next
-            if a == b:
-                return True
+            if a == b: return True
         return False
-```
-
-time complexity: O(N)   
-space complexity: O(1)

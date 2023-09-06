@@ -1,0 +1,27 @@
+from typing import Optional, List
+
+# Definition for singly-linked list.
+class ListNode:
+    def __init__(self, val=0, next=None):
+        self.val = val
+        self.next = next
+class Solution:
+    def splitListToParts(self, head: Optional[ListNode], k: int) -> List[Optional[ListNode]]:
+        length, node = 0, head
+        while node:
+            length += 1
+            node = node.next
+        div, mod = length // k, length % k
+        ans = []
+        for _ in range(k):
+            if not head:
+                ans.append(head)
+                continue
+            node, cnt = head, div + int(mod > 0)
+            mod -= 1
+            for _ in range(cnt - 1): node = node.next
+            tmp = node.next
+            node.next = None
+            ans.append(head)
+            head = tmp
+        return ans

@@ -1,4 +1,4 @@
-```python
+from typing import List
 class Solution:
     def minOperations(self, nums: List[int], x: int) -> int:
         numsSum = sum(nums)
@@ -16,7 +16,3 @@ class Solution:
             if currSum == requiredSum:
                 maxLength = max(maxLength, right - left + 1)
         return len(nums) - maxLength if maxLength > 0 else -1
-```
-
-time complexity: O(N)           
-space complexity: O(1)

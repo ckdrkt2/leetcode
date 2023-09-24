@@ -1,4 +1,3 @@
-```python
 class Solution:
     def champagneTower(self, poured: int, query_row: int, query_glass: int) -> float:
         if not poured: return 0
@@ -13,8 +12,4 @@ class Solution:
                 cur[i] += rest / 2
                 cur[i+1] += rest / 2
             ex = cur
-        return min(cur[query_glass],1)
-```
-
-time complexity: O(R^2)     
-space complexity: O(R^2)
+        return min(cur[query_glass], 1)

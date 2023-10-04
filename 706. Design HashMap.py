@@ -1,4 +1,3 @@
-```python
 class MyHashMap:
 
     def __init__(self):
@@ -12,13 +11,3 @@ class MyHashMap:
 
     def remove(self, key: int) -> None:
         self.map[key] = -1
-
-
-# Your MyHashMap object will be instantiated and called as such:
-# obj = MyHashMap()
-# obj.put(key,value)
-# param_2 = obj.get(key)
-# obj.remove(key)
-```
-time complexity: O(1000000)   
-space complexity: O(100000)

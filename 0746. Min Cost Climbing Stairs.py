@@ -1,8 +1,9 @@
-```python
+from typing import List
+
 class Solution:
     def minCostClimbingStairs(self, cost: List[int]) -> int:
         if not cost: return 0
-			
+
         dp = [0] * len(cost)
         dp[0] = cost[0]
         
@@ -13,7 +14,3 @@ class Solution:
             dp[i] = cost[i] + min(dp[i-1], dp[i-2])
             
         return min(dp[-1], dp[-2])
-```
-
-time complexity: O(N)           
-space compleixty: O(N)

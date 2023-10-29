@@ -1,4 +1,4 @@
-from math import ceil
+from math import ceil, log
 
 class Solution:
     def poorPigs(self, buckets: int, minutesToDie: int, minutesToTest: int) -> int:

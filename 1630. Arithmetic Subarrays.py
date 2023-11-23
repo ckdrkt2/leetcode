@@ -1,4 +1,4 @@
-```python
+from typing import List
 class Solution:
     def checkArithmeticSubarrays(self, nums: List[int], l: List[int], r: List[int]) -> List[bool]:
         def f(b):
@@ -7,13 +7,8 @@ class Solution:
                 if b[j+1] - b[j] != gap:
                     return False
             return True
-        a = []
+
+        ans = []
         for i in range(len(l)):
-            b = sorted([nums[i] for i in range(l[i], r[i]+1)])
-            a.append(f(b))
-        return a
-```
-
-time complexity: O(NN)
-
-space complexity: O(N)
+            ans.append(f(sorted([nums[i] for i in range(l[i], r[i]+1)])))
+        return ans

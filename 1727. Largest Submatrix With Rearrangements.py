@@ -1,0 +1,26 @@
+from typing import List
+
+
+class Solution:
+    def largestSubmatrix(self, matrix: List[List[int]]) -> int:
+        m, n = len(matrix), len(matrix[0])
+        prev, ans = [], 0
+
+        for row in range(m):
+            heights, seen = [], [False] * n
+
+            for height, col in prev:
+                if matrix[row][col] == 1:
+                    heights.append((height + 1, col))
+                    seen[col] = True
+
+            for col in range(n):
+                if not seen[col] and matrix[row][col] == 1:
+                    heights.append((1, col))
+
+            for i in range(len(heights)):
+                ans = max(ans, heights[i][0] * (i + 1))
+
+            prev = heights
+
+        return ans

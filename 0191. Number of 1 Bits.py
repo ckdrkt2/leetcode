@@ -1,4 +1,3 @@
 class Solution:
     def hammingWeight(self, n: int) -> int:
-        return len(bin(n)[2:].replace("0", ""))
-        
+        return sum((n >> i) & 1 for i in range(32))

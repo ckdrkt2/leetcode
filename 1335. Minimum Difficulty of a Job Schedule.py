@@ -1,16 +1,8 @@
+from typing import List
+
 class Solution:
     def minDifficulty(self, jobDifficulty: List[int], d: int) -> int:
         if len(jobDifficulty) < d: return -1
-
-        # dfs solution -> time limit exceeded
-        # def dfs(jobs, days):
-        #     if days == 1: return max(jobs)
-        #     m = float('inf')
-        #     for i in range(1, len(jobs)):
-        #         v = max(jobs[:i]) + dfs(jobs[i:], days - 1)
-        #         m = min(m, v)
-        #     return m
-        # return dfs(jobDifficulty, d)
 
         n = len(jobDifficulty)
         dp = [[300000] * d for _ in range(n)]

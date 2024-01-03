@@ -1,14 +1,11 @@
-```python
+from typing import List
+
 class Solution:
     def numberOfBeams(self, bank: List[str]) -> int:
-        a = bank.pop(0).count('1'); res = 0
+        ex, ans = bank.pop(0).count('1'), 0
         for i, b in enumerate(bank):
             cur = b.count('1')
             if not cur: continue
-            res += a * cur
-            a = cur
-        return res
-```
-
-time complexity: O(MN)
-space complexity: O(1)
+            ans += ex * cur
+            ex = cur
+        return ans

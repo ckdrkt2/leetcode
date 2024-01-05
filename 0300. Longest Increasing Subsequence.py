@@ -1,9 +1,12 @@
+from typing import List
 from bisect import bisect_left
 
 class Solution:
     def lengthOfLIS(self, nums: List[int]) -> int:
-        arr = [nums.pop(0)]
+        ans = [nums.pop(0)]
         for n in nums:
-            if n > arr[-1]: arr.append(n)
-            else: arr[bisect_left(arr, n)] = n
-        return len(arr)
+            if n > ans[-1]: 
+                ans.append(n)
+            else: 
+                ans[bisect_left(ans, n)] = n
+        return len(ans)

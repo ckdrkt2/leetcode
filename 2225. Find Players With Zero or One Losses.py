@@ -1,14 +1,22 @@
-from collections import Counter
+from typing import List
+
 class Solution:
     def findWinners(self, matches: List[List[int]]) -> List[List[int]]:
-        d, players = Counter(), set()
-        ans = [[],[]]
+        zero, one, two = set(), set(), set()
+
         for winner, loser in matches:
-            d[loser] += 1
-            players.add(winner)
-            players.add(loser)
-        for player in sorted(players):
-            cnt = d[player]
-            if cnt == 0: ans[0].append(player)
-            elif cnt == 1: ans[1].append(player)
-        return ans
+            if (winner not in one) and (winner not in two):
+                zero.add(winner)
+
+            if loser in zero:
+                zero.remove(loser)
+                one.add(loser)
+            elif loser in one:
+                one.remove(loser)
+                two.add(loser)
+            elif loser in two:
+                continue
+            else:
+                one.add(loser)
+
+        return [sorted(zero), sorted(one)]

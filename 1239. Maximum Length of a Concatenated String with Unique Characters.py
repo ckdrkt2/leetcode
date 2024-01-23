@@ -1,10 +1,13 @@
+from typing import List
+
+
 class Solution:
     def maxLength(self, arr: List[str]) -> int:
-        dp = [set()]
-        for a in arr:
-            if len(set(a)) < len(a): continue
-            a = set(a)
-            for c in dp:
-                if a & c: continue
-                dp.append(a | c)
-        return max(len(a) for a in dp)
+        unique, ans = [''], 0
+        for i in range(len(arr)):
+            for j in range(len(unique)):
+                new = arr[i] + unique[j]
+                if len(set(new)) == len(new):
+                    unique.append(new)
+                    ans = max(ans, len(new))
+        return ans

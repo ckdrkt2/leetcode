@@ -19,8 +19,10 @@ class MyQueue:
         return not self.output_s and not self.input_s
 
     def rearrange(self):
-        if not self.output_s:
-            while self.input_s: self.output_s.append(self.input_s.pop())
+        if self.output_s: return
+
+        while self.input_s:
+            self.output_s.append(self.input_s.pop())
 
 # Your MyQueue object will be instantiated and called as such:
 # obj = MyQueue()

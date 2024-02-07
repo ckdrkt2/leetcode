@@ -1,5 +1,6 @@
 from collections import Counter
+
+
 class Solution:
     def frequencySort(self, s: str) -> str:
-        c = Counter(s)
-        return ''.join(i * c[i] for i in sorted(c, key=lambda x : c[x], reverse=True))
+        return ''.join(i * Counter(s)[i] for i in sorted(Counter(s), key=lambda x: Counter(s)[x], reverse=True))

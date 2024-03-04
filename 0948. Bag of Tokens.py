@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def bagOfTokensScore(self, tokens: List[int], power: int) -> int:
         i, j, score = 0, len(tokens) - 1, 0

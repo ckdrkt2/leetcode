@@ -13,3 +13,4 @@ class Solution:
             for j, _ in enumerate(g):
                 ans += island(i,j)
         return ans
+        

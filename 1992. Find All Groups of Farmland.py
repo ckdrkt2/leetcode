@@ -1,4 +1,5 @@
-```python
+from typing import List
+
 class Solution:
     def findFarmland(self, land: List[List[int]]) -> List[List[int]]:
         m, n = len(land), len(land[0])
@@ -14,7 +15,3 @@ class Solution:
                         c2 += 1
                     groups.append([i, j, r2, c2])
         return groups
-```
-
-time complexity: O(MN)           
-space complexity: O(MN)

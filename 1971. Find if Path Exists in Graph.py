@@ -1,3 +1,5 @@
+from typing import List
+
 class Solution:
     def validPath(self, n: int, edges: List[List[int]], start: int, end: int) -> bool:
         adj = [[] for i in range(n)]

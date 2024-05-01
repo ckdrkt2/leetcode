@@ -1,4 +1,3 @@
-```python
 class Solution:
     def reversePrefix(self, word: str, ch: str) -> str:
         if word.find(ch)>= 0:
@@ -6,8 +5,3 @@ class Solution:
             w = word[:x+1]
             return w[::-1] + word[x+1:]
         return word
-```
-
-time complexity: O(N)
-
-space complexity: O(N)

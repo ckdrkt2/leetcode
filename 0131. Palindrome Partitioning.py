@@ -1,15 +1,16 @@
 class Solution:
-    def partition(self, s: str) -> List[List[str]]:
-        ans, path, l = [], [], len(s)
-        def dfs(i):
-            if i == l:
-                ans.append(path.copy())
-                return
-            for j in range(i, l):
-                st = s[i: j+1]
-                if st == st[::-1]:
-                    path.append(st)
-                    dfs(j+1)
-                    path.pop()
-        dfs(0)
+    def partition(self, s: str):
+        ans = []
+        self.dfs(s, [], ans)
         return ans
+
+    def dfs(self, s, path, ans):
+        if not s:
+            ans.append(path)
+            return
+        for i in range(1, len(s)+1):
+            if self.isPal(s[:i]):
+                self.dfs(s[i:], path+[s[:i]], ans)
+
+    def isPal(self, s):
+        return s == s[::-1]

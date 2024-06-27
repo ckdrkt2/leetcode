@@ -1,9 +1,6 @@
-```python
+from typing import List
+
+
 class Solution:
     def findCenter(self, edges: List[List[int]]) -> int:
         return edges[0][0] if (edges[0][0] == edges[1][0]) or (edges[0][0] == edges[1][1]) else edges[0][1]
-```
-
-space complexity: O(1)
-
-time complexity: O(1)

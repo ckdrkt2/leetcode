@@ -1,41 +1,39 @@
-class Solution(object):
-    def maxNumEdgesToRemove(self, n, edges):
+from typing import List
 
-        ufa, ufb = UnionFind(n), UnionFind(n)
-        cnt = 0
+class Solution:
+    def maxNumEdgesToRemove(self, n: int, edges: List[List[int]]) -> int:
+        alice, bob = UnionFind(n), UnionFind(n)
 
-        for x, y, z in edges:
-            if x == 3:
-                flag1 = ufa.union(y, z)
-                flag2 = ufb.union(y, z)
-                if not flag1 or not flag2: cnt += 1
+        cnt = sum((alice.union(src, dst) | bob.union(src, dst)) for type, src, dst in edges if type == 3)
+        for type, src, dst in edges:
+            cnt += (alice if type == 1 else bob).union(src, dst)
 
-        for x, y, z in edges:
-            if x == 1:
-                flag = ufa.union(y, z)
-                if not flag: cnt += 1
-            if x == 2:
-                flag = ufb.union(y, z)
-                if not flag: cnt += 1
+        return (len(edges) - cnt) if bob.isConnected() and alice.isConnected() else -1
 
-        return cnt if ufa.groups == 1 and ufb.groups == 1 else -1
-
-class UnionFind():
+class UnionFind:
     def __init__(self, n):
-        self.parents = {i: i for i in range(1, n + 1)}
-        self.groups = n
+        self.n = n
+        self.par = list(range(n + 1))
+        self.rank = [1] * (n + 1)
 
     def find(self, x):
-        if self.parents[x] == x: return x
+        while x != self.par[x]:
+            self.par[x] = self.par[self.par[x]]
+            x = self.par[x]
+        return x
+
+    def union(self, x1, x2):
+        p1, p2 = self.find(x1), self.find(x2)
+        if p1 == p2:
+            return False
+        if self.rank[p1] > self.rank[p2]:
+            self.par[p2] = p1
+            self.rank[p1] += self.rank[p2]
         else:
-            self.parents[x] = self.find(self.parents[x])
-            return self.parents[x]
-
-    def union(self, x, y):
-        x, y = self.find(x), self.find(y)
-
-        if x == y: return False
-
-        self.parents[y] = x
-        self.groups -= 1
+            self.par[p1] = p2
+            self.rank[p2] += self.rank[p1]
+        self.n -= 1
         return True
+
+    def isConnected(self):
+        return self.n == 1

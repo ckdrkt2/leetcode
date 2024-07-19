@@ -1,4 +1,6 @@
-```python
+from typing import List
+
+
 class Solution:
     def luckyNumbers (self, matrix: List[List[int]]) -> List[int]:
         a = [0 for i in matrix[0]]
@@ -12,8 +14,3 @@ class Solution:
                     b[m] = c
         for i in a:
             if i in b: return [i]
-```
-
-space complexity: O(M+N)
-
-tiem complexity: O(M*N)
